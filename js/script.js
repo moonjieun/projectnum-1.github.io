@@ -1,30 +1,40 @@
+
 $(document).ready(function () {
   $(".top-bar-wrap .top-bar > .menu-wrap > ul > li > a").click(function () {
+    let indexNum = $(this).index();
+
     if ($(this).hasClass("active")) {
+  
       $(this).removeClass("active");
       $(".nav-2-depth-wrap").removeClass("active");
-      $(".nav-2-depth-wrap .left > .nav").removeClass("active");
+      $(".nav-2-depth-wrap .left > .nav").eq(indexNum).removeClass("active");
     } else {
+   
       $(this).addClass("active");
       $(this).siblings().removeClass("active");
 
       $(".nav-2-depth-wrap").addClass("active");
 
-      $(".nav-2-depth-wrap .left > .nav").addClass("active");
-      $(".nav-2-depth-wrap .left > .nav").siblings().removeClass("active");
+      $(".nav-2-depth-wrap .left > .nav").eq(indexNum).addClass("active");
+      $(".nav-2-depth-wrap .left > .nav")
+        .eq(indexNum)
+        .siblings()
+        .removeClass("active");
     }
   });
 
   /*mo-version nav-2-depth effect  */
 
   $(".mo-top-bar-wrap > .mo-top-bar > .hamburger").click(function () {
+    let indexNum = $(this).index();
+
     if ($(this).hasClass("active")) {
-      //  메뉴야 꺼져
+   
       $(this).removeClass("active");
       $(".mo-nav-2-depth-wrap").removeClass("active");
       $(".mo-nav-2-depth-wrap .left > .nav").eq(indexNum).removeClass("active");
     } else {
-      // 기본기능
+    
       $(this).addClass("active");
       $(this).siblings().removeClass("active");
 
@@ -68,7 +78,7 @@ $(document).ready(function () {
     dotsClass: "slick-dots",
     dots: true,
     arrows: true,
-    prevArrow:
+      prevArrow:
       "<div class='before-btn'><img src='https://www.samsung.com/sec/static/_images/common/icon-slick-prev-compo-wht.svg' alt=''></div>",
     nextArrow:
       "<div class='next-btn'><img src='https://www.samsung.com/sec/static/_images/common/icon-slick-next-compo-wht.svg' alt=''></div>",
